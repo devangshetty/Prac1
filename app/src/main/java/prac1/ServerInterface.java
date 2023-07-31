@@ -1,12 +1,17 @@
 package prac1;
 
-interface SimpleImplementation {
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.Stack;
+
+interface ServerInterface extends Remote {
+    public static final String SERVICE_URL = "//localhost/simple";
     /** Adds two numbers together */
-    int sum(int a, int b);
+    int sum(int a, int b) throws RemoteException;
 
     /** Pushes a value onto the server's array */
-    void push(int val);
+    void push(int val) throws RemoteException;
 
     /** Returns the server's array */
-    int[] get();
+    Stack<Integer> get() throws RemoteException;
 }
